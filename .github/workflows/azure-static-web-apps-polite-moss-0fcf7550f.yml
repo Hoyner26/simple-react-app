@@ -4,18 +4,18 @@ on:
 
   push:
     branches:
-      - dev
+      - test1
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - dev
+      - test1
 
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    environment: dev
+    environment: test1
     steps:
       - uses: actions/checkout@v3
         with:
